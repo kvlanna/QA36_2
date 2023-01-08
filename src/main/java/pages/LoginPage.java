@@ -18,14 +18,13 @@ public class LoginPage extends PageBase{
     @FindBy(xpath = "//button[@type=\"submit\"]")
     WebElement loginButton;
 
-    @FindBy(xpath = "//select[@id= 'langSelect']")
+    @FindBy(xpath = "//select[@id=\"langSelect\"]")
     WebElement langSelect;
     public ContactsPage login(String uName, String pass) {
-        sleep();
+
         type(userName, uName);
         type(password, pass);
         click(loginButton);
-        sleep();
         return new ContactsPage(driver);
     }
 

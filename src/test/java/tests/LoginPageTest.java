@@ -4,32 +4,20 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.ContactsPage;
 import pages.LoginPage;
-import pages.PageBase;
 
 public class LoginPageTest extends TestBase{
 
     @Test
     public void loginPositiveTest(){
-        String language = System.clearProperty("language");
+        logger.info("Starting login test");
+        String language= System.getProperty("language");
         LoginPage myLoginPage = new LoginPage(driver);
         ContactsPage contactsPage = myLoginPage.login("test@gmail.com", "test@gmail.com");
-        //sleep();
+        sleep();
+        contactsPage.getContacts(language);
         contactsPage.selectLanguage(language);
-       // sleep();
+        sleep();
         Assert.assertEquals(contactsPage.getContacts(language).getText(), ContactsPage.getContactWord(language));
+        logger.info("Finished login test");
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
